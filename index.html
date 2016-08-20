@@ -9,7 +9,12 @@
   <body>
     <div id="app">
         {{ msg }}
-        <button type="button" @click="getApi()">getApi</button>
+        <br>
+        <div v-for="show in list">
+          {{ show.name }}
+          <img src="{{show.icon}}">
+          {{ show.coords }}
+        </div>
     </div>
   </body>
   <script src="./app.js"></script>
