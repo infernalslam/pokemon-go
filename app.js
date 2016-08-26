@@ -1,4 +1,4 @@
-/*global Vue*/
+/*global Vue, moment*/
 var app = new Vue({
   el: '#app',
   data: {
@@ -13,14 +13,17 @@ var app = new Vue({
         that.list = res.data.results
         console.log(that.list)
       })
+    },
+    momentjs: function (time) {
+      return moment(time).format('mm:ss')
     }
   },
   ready: function () {
     this.getApi()
-    var that = this
-    setInterval(function () {
-      that.getApi()
-    }, 5000)
+    // var that = this
+    // setInterval(function () {
+    //   that.getApi()
+    // }, 5000)
   }
 })
 console.log(app)

@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.9.3/vue-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/locale/th.js"></script>
     <title>Pokemon Go</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="app">
-        {{ msg }}
-        <br>
-        <div v-for="show in list">
-          {{ show.name }}
-          <img src="{{show.icon}}">
-          {{ show.coords }}
+      <div class="row" style="padding-left: 18%;padding-right: 10%;">
+        <div class="ui link cards">
+            <div class="card" v-for="show in list">
+                <div class="content">
+                    <div class="right floated meta">{{ momentjs(show.until) }}</div>
+                    <img class="ui avatar image" src="{{show.icon}}"> {{show.name}}
+                </div>
+                <div class="image">
+                    <img src="{{show.icon}}">
+                </div>
+                <div class="content">
+                    <div class="header">{{show.name}}</div>
+                    <div class="meta"><a>Type : {{show.rarity}}</a></div>
+                    <div class="description">{{show.coords}}</div>
+                </div>
+            </div>
         </div>
+      </div>
     </div>
-  </body>
-  <script src="./app.js"></script>
+</body>
+<script src="./app.js"></script>
+<!-- <link rel="stylesheet" href="css.css"> -->
+
 </html>
