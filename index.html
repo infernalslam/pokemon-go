@@ -15,24 +15,33 @@
 
 <body>
     <div id="app">
-      <div class="row" style="padding-left: 18%;padding-right: 10%;">
-        <div class="ui link cards">
-            <div class="card" v-for="show in list">
-                <div class="content">
-                    <div class="right floated meta">{{ momentjs(show.until) }}</div>
-                    <img class="ui avatar image" src="{{show.icon}}"> {{show.name}}
+        <div class="row">
+            <div class="ui search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" v-model="search" placeholder="Search countries...">
+                    <i class="search icon"></i>
                 </div>
-                <div class="image">
-                    <img src="{{show.icon}}">
-                </div>
-                <div class="content">
-                    <div class="header">{{show.name}}</div>
-                    <div class="meta"><a>Type : {{show.rarity}}</a></div>
-                    <div class="description">{{show.coords}}</div>
+                <div class="results"></div>
+            </div>
+        </div>
+        <div class="row" style="padding-left: 18%;padding-right: 10%;">
+            <div class="ui link cards">
+                <div class="card" v-for="show in list | filterBy search">
+                    <div class="content">
+                        <div class="right floated meta">{{ momentjs(show.until) }}</div>
+                        <img class="ui avatar image" src="{{show.icon}}"> {{show.name}}
+                    </div>
+                    <div class="image">
+                        <img src="{{show.icon}}">
+                    </div>
+                    <div class="content">
+                        <div class="header">{{show.name}}</div>
+                        <div class="meta"><a>Type : {{show.rarity}}</a></div>
+                        <div class="description">{{show.coords}}</div>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
 </body>
 <script src="./app.js"></script>
